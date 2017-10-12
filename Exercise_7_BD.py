@@ -75,4 +75,15 @@ d+scale_color_manual(values=['green','red'])
 f=ggplot(turtles,aes(x="%_Lipid",y="%_TAG"))+geom_point(aes(color="Condition"))
 f+scale_color_manual(values=['green','red'])+theme_classic()+stat_smooth(method="lm")
 
+#3
 
+import pandas
+data=pandas.read_csv("data.txt",sep=",",header=0)
+
+#barplot
+n=ggplot(data)+theme_classic()+xlab("region")+ylab("observations")
+n+geom_bar(aes(x="region",y="observations"),stat="summary",fun_y=numpy.mean)
+
+#scatterplot with jitter
+o=ggplot(data,aes(x="region",y="observations"))+theme_classic()
+o+geom_jitter()+coord_cartesian()
