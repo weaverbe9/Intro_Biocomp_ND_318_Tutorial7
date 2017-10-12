@@ -59,4 +59,20 @@ b+geom_histogram(binwidth=15,fill='green',color='black')+theme_classic()
 
 #2
 
+import numpy
+import pandas
+from plotnine import *
+
+turtles=pandas.read_csv("turtles2.csv",header=0)
+
+# plot of %TAG vs. %lipid for unhealthy and healthy turtles
+
+d=ggplot(turtles,aes(x="%_Lipid",y="%_TAG"))+theme_classic()+geom_point(aes(color="Condition"))
+d+scale_color_manual(values=['green','red'])
+
+# plot of %TAG vs. %lipid for unhealthy and healthy turtles with trendline
+
+f=ggplot(turtles,aes(x="%_Lipid",y="%_TAG"))+geom_point(aes(color="Condition"))
+f+scale_color_manual(values=['green','red'])+theme_classic()+stat_smooth(method="lm")
+
 
