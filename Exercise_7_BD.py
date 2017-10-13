@@ -45,30 +45,31 @@ seqDF = pandas.DataFrame(list(zip(sequenceID,sequenceLength,percentGC,meltingTem
 
 #1
 
+#import packages
 import numpy
 import pandas
+#import from plotnine
 from plotnine import *
 
-# histogram of sequence lengths
+#histogram of sequence lengths
 a=ggplot(aes(x='sequenceLength'), data= seqDF)
 a+geom_histogram(binwidth=5, fill='orange',color='black')+theme_classic()
 
-# histogram of GC content
+#histogram of GC content
 b=ggplot(aes(x='percentGC'), data= seqDF)
 b+geom_histogram(binwidth=15,fill='green',color='black')+theme_classic()
 
 #2
 
+#import package
 import numpy
+#import package
 import pandas
+#import from plotnine
 from plotnine import *
 
 turtles=pandas.read_csv("turtles2.csv",header=0)
 
-# plot of %TAG vs. %lipid for unhealthy and healthy turtles
-
-d=ggplot(turtles,aes(x="%_Lipid",y="%_TAG"))+theme_classic()+geom_point(aes(color="Condition"))
-d+scale_color_manual(values=['green','red'])
 
 # plot of %TAG vs. %lipid for unhealthy and healthy turtles with trendline
 
@@ -77,7 +78,9 @@ f+scale_color_manual(values=['green','red'])+theme_classic()+stat_smooth(method=
 
 #3
 
+#import package
 import pandas
+#load file
 data=pandas.read_csv("data.txt",sep=",",header=0)
 
 #barplot
